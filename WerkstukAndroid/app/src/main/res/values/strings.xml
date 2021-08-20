@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name">Werkstuk Android</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="facebook_app_id">871271020310628</string>
-    <string name="fb_login_protocol_scheme">fb871271020310628</string>
-    <string name="connect_your_facebook_account">Connect to your facebook account:</string>
-
+    <string name="app_name">WerkstukAndroid</string>
+    <string name="AddNoteButtonText">Add note</string>
 </resources>
