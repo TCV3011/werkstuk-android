@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import be.ehb.werkstukandroid.database.Database;
 import be.ehb.werkstukandroid.database.DatabaseRepository;
 import be.ehb.werkstukandroid.entity.Note;
@@ -15,16 +17,19 @@ import be.ehb.werkstukandroid.entity.Note;
 public class AddNote extends AppCompatActivity {
     EditText noteTitle, noteDetails;
     DatabaseRepository repo;
+    FloatingActionButton saveNoteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("New note");
         setContentView(R.layout.activity_add_note);
+
+        saveNoteButton = findViewById(R.id.saveNoteButton);
+        saveNoteButton.setOnClickListener(view -> saveNote());
     }
 
-    public void saveNote(View view) {
+    private void saveNote() {
         repo = new DatabaseRepository(this.getApplication());
         noteTitle = findViewById(R.id.noteTitle);
         noteDetails = findViewById(R.id.noteDetails);

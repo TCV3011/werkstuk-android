@@ -1,6 +1,7 @@
 package be.ehb.werkstukandroid.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+import be.ehb.werkstukandroid.EditNote;
 import be.ehb.werkstukandroid.R;
 import be.ehb.werkstukandroid.database.DatabaseRepository;
 import be.ehb.werkstukandroid.entity.Note;
@@ -65,7 +67,14 @@ public class CustomNoteAdapter extends ArrayAdapter<Note> {
         viewHolder.noteTitle.setText(noteTitle);
 
         // update note
-        // viewHolder.noteItem.setOnClickListener();
+        viewHolder.noteItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, EditNote.class);
+                i.putExtra("noteId", note.id);
+                context.startActivity(i);
+            }
+        });
 
         return convertView;
     }
