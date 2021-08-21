@@ -3,4 +3,14 @@
     <string name="AddNoteButtonText">Add note</string>
     <string name="note_title">Note title</string>
     <string name="note_details">Note details</string>
+    <string name="new_note">New note</string>
+    <string name="note_saved">Note saved</string>
+    <string name="edit_note">Edit note</string>
+    <string name="note_updated">Note updated</string>
+    <string name="delete_message">Are you sure you want to delete this note?</string>
+    <string name="delete_title">Alert!</string>
+    <string name="note_deleted">Note deleted</string>
+    <string name="alert_no">No</string>
+    <string name="alter_yes">Yes</string>
+    <string name="my_notes">My notes</string>
 </resources>

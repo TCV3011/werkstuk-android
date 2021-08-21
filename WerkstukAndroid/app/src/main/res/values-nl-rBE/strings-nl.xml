@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">WerkstukAndroid</string>
+    <string name="AddNoteButtonText">Nieuwe notitie</string>
+    <string name="note_title">Notitie titel</string>
+    <string name="note_details">Notitie details</string>
+    <string name="new_note">Nieuwe notitie</string>
+    <string name="note_saved">Notitie opgeslagen</string>
+    <string name="edit_note">Bewerk notitie</string>
+    <string name="note_updated">Notitie bewerkt</string>
+    <string name="delete_message">Ben je zeker dat je deze notitie wilt verwijderen?</string>
+    <string name="delete_title">Opgepast!</string>
+    <string name="note_deleted">Notitie verwijdert</string>
+    <string name="alert_no">Nee</string>
+    <string name="alter_yes">Ja</string>
+    <string name="my_notes">Mijn notities</string>
+</resources>

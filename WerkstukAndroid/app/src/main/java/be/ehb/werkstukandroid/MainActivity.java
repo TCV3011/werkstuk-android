@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("My notes");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.my_notes);
         repo = new DatabaseRepository(getApplication());
         addButton = findViewById(R.id.addNoteButton);
         listOfNotes = findViewById(R.id.listOfNotes);

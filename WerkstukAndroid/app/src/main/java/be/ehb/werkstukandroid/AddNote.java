@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Objects;
+
 import be.ehb.werkstukandroid.database.Database;
 import be.ehb.werkstukandroid.database.DatabaseRepository;
 import be.ehb.werkstukandroid.entity.Note;
@@ -22,7 +24,7 @@ public class AddNote extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setTitle("New note");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.new_note);
         setContentView(R.layout.activity_add_note);
 
         saveNoteButton = findViewById(R.id.saveNoteButton);
@@ -37,7 +39,7 @@ public class AddNote extends AppCompatActivity {
         repo.insertNote(new Note(noteTitle.getText().toString(), noteDetails.getText().toString()));
 
         // https://stackoverflow.com/questions/8202006/android-have-toast-appear-on-button-click
-        Toast toast = Toast.makeText(getApplicationContext(), "Note saved", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.note_saved, Toast.LENGTH_SHORT);
         toast.show();
         goToMain();
     }

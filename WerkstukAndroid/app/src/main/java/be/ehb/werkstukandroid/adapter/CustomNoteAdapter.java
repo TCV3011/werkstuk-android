@@ -2,16 +2,22 @@ package be.ehb.werkstukandroid.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import be.ehb.werkstukandroid.EditNote;
@@ -28,6 +34,31 @@ public class CustomNoteAdapter extends ArrayAdapter<Note> {
     private static class ViewHolder {
         TextView noteTitle;
         GridLayout noteItem;
+        ImageView noteImage;
+    }
+
+    // https://medium.com/@crossphd/android-image-loading-from-a-string-url-6c8290b82c5e
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap bmp = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                bmp = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return bmp;
+        }
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 
     public CustomNoteAdapter(ArrayList<Note> data, Context context, DatabaseRepository repo) {
@@ -50,6 +81,7 @@ public class CustomNoteAdapter extends ArrayAdapter<Note> {
 
             viewHolder.noteTitle = (TextView) convertView.findViewById(R.id.noteListTitle);
             viewHolder.noteItem = (GridLayout) convertView.findViewById(R.id.noteListItem);
+            viewHolder.noteImage = (ImageView) convertView.findViewById(R.id.noteImage);
 
             result = convertView;
             convertView.setTag(viewHolder);
@@ -65,7 +97,7 @@ public class CustomNoteAdapter extends ArrayAdapter<Note> {
             noteTitle = note.title;
         }
         viewHolder.noteTitle.setText(noteTitle);
-
+        new DownloadImageTask(viewHolder.noteImage).execute("https://www.pngkey.com/png/detail/20-201537_notes-clipart-posted-note-post-its-icon-png.png");
         // update note
         viewHolder.noteItem.setOnClickListener(new View.OnClickListener() {
             @Override

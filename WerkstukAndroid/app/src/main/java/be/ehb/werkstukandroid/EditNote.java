@@ -26,7 +26,7 @@ public class EditNote extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Edit note");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(R.string.edit_note);
         setContentView(R.layout.activity_edit_note);
 
         repo = new DatabaseRepository(getApplication());
@@ -54,7 +54,7 @@ public class EditNote extends AppCompatActivity {
         repo.updateNote(current);
 
         // https://stackoverflow.com/questions/8202006/android-have-toast-appear-on-button-click
-        Toast toast = Toast.makeText(getApplicationContext(), "Note updated", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), R.string.note_updated, Toast.LENGTH_SHORT);
         toast.show();
         goToMain();
     }
@@ -67,8 +67,8 @@ public class EditNote extends AppCompatActivity {
         AlertDialog.Builder builder
                 = new AlertDialog
                 .Builder(EditNote.this);
-        builder.setMessage("Are you sure you want to delete this note?");
-        builder.setTitle("Alert!");
+        builder.setMessage(R.string.delete_message);
+        builder.setTitle(R.string.delete_title);
 
         // Set Cancelable false
         // for when the user clicks on the outside
@@ -80,7 +80,7 @@ public class EditNote extends AppCompatActivity {
         // DialogInterface interface.
         builder
                 .setPositiveButton(
-                        "Yes",
+                        R.string.alter_yes,
                         new DialogInterface
                                 .OnClickListener() {
 
@@ -90,7 +90,7 @@ public class EditNote extends AppCompatActivity {
                             {
                                 repo.deleteNote(current);
                                 // https://stackoverflow.com/questions/8202006/android-have-toast-appear-on-button-click
-                                Toast toast = Toast.makeText(getApplicationContext(), "Note deleted", Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(getApplicationContext(), R.string.note_deleted, Toast.LENGTH_SHORT);
                                 toast.show();
                                 goToMain();
                             }
@@ -101,7 +101,7 @@ public class EditNote extends AppCompatActivity {
         // of DialogInterface interface.
         builder
                 .setNegativeButton(
-                        "No",
+                        R.string.alert_no,
                         new DialogInterface
                                 .OnClickListener() {
 
